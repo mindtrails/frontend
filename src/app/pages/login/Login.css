@@ -2,7 +2,7 @@
     background: rgba(255, 255, 255, 0.7);
 
     padding: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 
     border-radius: 10px ;
 
@@ -21,10 +21,8 @@
     width: 100%;
     text-align: center;
     
-    bottom: -25px;
-    margin: auto;
+    bottom: -10px;
     left: 0;
-    height: 40px;
 }
 
 .loginRegisterFormTitle {

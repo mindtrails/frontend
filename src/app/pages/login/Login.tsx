@@ -10,7 +10,17 @@ const Login = () => {
         <div className="homepageContainer">
             <Navbar></Navbar>
 
-            <div className="pageContainer"></div>
+            <div className="pageContainer">
+                <form className="loginRegisterForm">
+                    <div className="loginRegisterFormTitle">LOGIN</div>
+                    <input type="text" placeholder="Username" />
+                    <input type="password" placeholder="Password" />
+                    <input type="submit"></input>
+                    <a href="/register" className="registerInstead">
+                        Not a member? Signup now
+                    </a>
+                </form>
+            </div>
         </div>
     );
 };

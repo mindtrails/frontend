@@ -17,15 +17,14 @@ const Homepage = () => {
                     <Icon size={8} path={mdiGraphOutline} rotate={15}></Icon>
                     <span className="logoContainerSpans">MindTrails</span>
                     <span className="logoContainerSpans">Learning</span>
+                    <button
+                        className="homepageButton"
+                        type="button"
+                        onClick={() => onSubmit()}
+                    >
+                        Get Started
+                    </button>
                 </div>
-
-                <button
-                    className="homepageButton"
-                    type="button"
-                    onClick={() => onSubmit()}
-                >
-                    Get Started
-                </button>
             </div>
         </div>
     );

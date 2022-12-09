@@ -31,3 +31,8 @@ button {
           user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome, Edge, Opera and Firefox */
 }
+
+textarea:focus, input:focus{
+  outline: none;
+}
+

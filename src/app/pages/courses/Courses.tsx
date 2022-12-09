@@ -14,11 +14,11 @@ const Courses = () => {
     return (
         <div className="homepageContainer">
             <Navbar></Navbar>
-
+            <div className="coursesPageTitle">Available courses</div>
             <div className="coursesPageContainer">
                 <CourseCard
                     icon={mdiPi}
-                    title="Math"
+                    title="Mathematics"
                     description={mathDescription}
                 ></CourseCard>
                 <CourseCard

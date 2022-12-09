@@ -1,5 +1,6 @@
 .navBarContainer {
     width: 100vw;
+    font-family: 'Lexend', sans-serif;
 } 
 ul {
     list-style-type: none;
@@ -19,7 +20,7 @@ ul {
     text-align: center;
     text-decoration: none;
 
-    font-weight: bold;
+    /* font-weight: bold; */
 
     padding: 20px;
 

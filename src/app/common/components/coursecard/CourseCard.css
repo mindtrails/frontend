@@ -4,7 +4,7 @@
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 15px;
     margin: 20px;
-    padding: 10px;
+    padding: 20px;
     padding-bottom: 70px;
     position: relative;
 }
@@ -12,6 +12,7 @@
     font-size: 30px;
     text-align: left;
     padding: 10px;
+    font-family: 'Lexend', sans-serif;
 }
 
 .courseCardContent {
@@ -19,16 +20,15 @@
     flex-wrap: nowrap;
     width: 100%;
     
-
     align-items: center;
     justify-content: left;
 
-    padding-left: 25px;
 }
 
 .courseCardDescription {
-    font-weight: bold;
+    font-weight: 400;
     text-align: left;
+    font-size: 18px;
 
 } 
 
@@ -55,7 +55,7 @@
 
     transition-duration: 0.4s;
 
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: 'Lexend', sans-serif;
 
 } 
 .courseCardButton:hover {

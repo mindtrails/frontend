@@ -17,7 +17,7 @@
 }
 
 .logoContainer {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Lexend', sans-serif;
 
     position: absolute;
     display: inline-flex;
@@ -57,7 +57,7 @@
 
     transition-duration: 0.4s;
 
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: 'Lexend', sans-serif;
 
 } 
 .homepageButton:hover {

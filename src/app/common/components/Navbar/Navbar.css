@@ -18,7 +18,9 @@ ul {
     color: white;
     text-align: center;
     text-decoration: none;
-    
+
+    font-weight: bold;
+
     padding: 20px;
 
     flex-wrap: nowrap;
@@ -30,4 +32,8 @@ ul {
   /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: rgba(255, 255, 255, 0.116);
+  }
+
+  .loginIcon {
+    margin-right: 7px;
   }

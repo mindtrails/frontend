@@ -3,7 +3,7 @@ import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import "./Homepage.css";
 
-import Navbar from "../../common/components/Navbar/Navbar";
+import Navbar from "../../common/components/navbar/Navbar";
 
 const Homepage = () => {
     const onSubmit = () => console.log("Works");

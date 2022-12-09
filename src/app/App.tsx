@@ -5,6 +5,7 @@ import Homepage from "../app/pages/homepage/Homepage";
 import Courses from "./pages/courses/Courses";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Notfound from "./pages/notfound/Notfound";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     {
         path: "/register",
         element: <Register></Register>,
+    },
+    {
+        path: "*",
+        element: <Notfound></Notfound>,
     },
 ]);
 

@@ -3,11 +3,12 @@ import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import "./Homepage.css";
 
+import { useNavigate } from "react-router-dom";
+
 import Navbar from "../../common/components/navbar/Navbar";
 
 const Homepage = () => {
-    const onSubmit = () => console.log("Works");
-
+    const navigate = useNavigate();
     return (
         <div className="homepageContainer">
             <Navbar></Navbar>
@@ -20,7 +21,7 @@ const Homepage = () => {
                     <button
                         className="homepageButton"
                         type="button"
-                        onClick={() => onSubmit()}
+                        onClick={() => navigate("/courses")}
                     >
                         Get Started
                     </button>

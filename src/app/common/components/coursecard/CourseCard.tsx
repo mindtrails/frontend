@@ -2,6 +2,7 @@ import React from "react";
 import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import "./CourseCard.css";
+import { useNavigate } from "react-router-dom";
 
 interface CardProps {
     icon: typeof mdiGraphOutline;
@@ -10,6 +11,7 @@ interface CardProps {
 }
 
 const CourseCard = (props: CardProps) => {
+    const navigate = useNavigate();
     return (
         <div className="courseCardContainer">
             <div className="courseCardContent">
@@ -20,7 +22,12 @@ const CourseCard = (props: CardProps) => {
 
             <span className="courseCardDescription">{props.description}</span>
 
-            <button className="courseCardButton">Open course</button>
+            <button
+                className="courseCardButton"
+                onClick={() => navigate("/courses/" + props.title)}
+            >
+                Open course
+            </button>
         </div>
     );
 };

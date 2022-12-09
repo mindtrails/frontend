@@ -1,0 +1,67 @@
+.courseCardContainer {
+    width: 450px;
+    /* height: 200px; */
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px;
+    padding-bottom: 70px;
+    position: relative;
+}
+.courseCardTitle {
+    font-size: 30px;
+    text-align: left;
+    padding: 10px;
+}
+
+.courseCardContent {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    
+
+    align-items: center;
+    justify-content: left;
+
+    padding-left: 25px;
+}
+
+.courseCardDescription {
+    font-weight: bold;
+    text-align: left;
+
+} 
+
+.courseCardButton {
+    background-color: #ffffff;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+
+    width: 100%;
+    border-radius: 10px;
+
+    margin: 10px 0 0 0;
+    
+
+    transition-duration: 0.4s;
+
+    font-family: 'Ubuntu Condensed', sans-serif;
+
+} 
+.courseCardButton:hover {
+    box-shadow:  -3px 3px 42px #d5d5d546,
+             3px -3px 42px #00000067;
+
+    transition-duration: 0.4s;
+
+}

@@ -1,0 +1,7 @@
+.coursesPageContainer {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    /* align-items: left; */
+    justify-content: left;
+}

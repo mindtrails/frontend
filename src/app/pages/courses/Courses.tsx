@@ -1,16 +1,32 @@
 import React from "react";
-import { mdiGraphOutline } from "@mdi/js";
-import Icon from "@mdi/react";
+import { mdiPi, mdiBookOpenBlankVariant } from "@mdi/js";
 import "./Courses.css";
 
 import Navbar from "../../common/components/navbar/Navbar";
 
+import CourseCard from "../../common/components/coursecard/CourseCard";
+
+const mathDescription =
+    "Explore the beauty of math through fun and engaging problem-solving adventures!";
+const roDescription =
+    "Experience the rich culture and history of Romania through immersive language lessons and engaging activities!";
 const Courses = () => {
     return (
         <div className="homepageContainer">
             <Navbar></Navbar>
 
-            <div className="pageContainer"></div>
+            <div className="coursesPageContainer">
+                <CourseCard
+                    icon={mdiPi}
+                    title="Math"
+                    description={mathDescription}
+                ></CourseCard>
+                <CourseCard
+                    icon={mdiBookOpenBlankVariant}
+                    title="Romanian"
+                    description={roDescription}
+                ></CourseCard>
+            </div>
         </div>
     );
 };

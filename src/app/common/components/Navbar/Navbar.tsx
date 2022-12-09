@@ -1,3 +1,5 @@
+import { mdiAccountCircleOutline } from "@mdi/js";
+import Icon from "@mdi/react";
 import React from "react";
 
 import "./Navbar.css";
@@ -7,17 +9,20 @@ const Navbar = () => {
         <div className="navBarContainer">
             <ul>
                 <li>
-                    <a href="#home">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="#news">News</a>
+                    <a href="/cursuri">Cursuri</a>
                 </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
+                <li></li>
                 <li style={{ float: "right" }}>
-                    <a className="active" href="#about">
-                        About
+                    <a href="/login">
+                        <Icon
+                            path={mdiAccountCircleOutline}
+                            title="User Profile"
+                            size={1.2}
+                        ></Icon>
+                        Login
                     </a>
                 </li>
             </ul>

@@ -14,11 +14,15 @@ ul {
   }
   
   li a {
-    display: block;
+    display: flex;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
   }
   
   /* Change the link color to #111 (black) on hover */

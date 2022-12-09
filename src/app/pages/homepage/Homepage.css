@@ -64,7 +64,7 @@
     box-shadow:  -3px 3px 42px #d5d5d546,
              3px -3px 42px #ebebeb2f;
 
-    margin-top: -5px;
+    bottom: calc(-10vh + 5px);
     transition-duration: 0.4s;
 
 }

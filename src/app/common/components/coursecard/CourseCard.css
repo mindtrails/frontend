@@ -59,8 +59,12 @@
 
 } 
 .courseCardButton:hover {
-    box-shadow:  -3px 3px 42px #d5d5d546,
-             3px -3px 42px #00000067;
+    box-shadow:  -3px 3px 42px #ffffff46,
+             3px -3px 42px #ffffff2f;
+
+    /* bottom: 5px; */
+    padding: 10px;
+    
 
     transition-duration: 0.4s;
 

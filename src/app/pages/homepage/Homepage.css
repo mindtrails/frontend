@@ -39,6 +39,33 @@
 .logoContainerSpans {
     margin: 10px;
 }
+.homepageButton {
+    position: absolute;
+    background-color: #ffffff;
+    top: 50vh;
+
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    padding: 15px 50px;
+
+    border-radius: 10px;
+    
+
+    transition-duration: 0.4s;
+} 
+.homepageButton:hover {
+    box-shadow:  -3px 3px 42px #d5d5d546,
+             3px -3px 42px #ebebeb2f;
+
+    margin-top: -5px;
+    transition-duration: 0.4s;
+
+}
 
 @keyframes gradient {
     0% {

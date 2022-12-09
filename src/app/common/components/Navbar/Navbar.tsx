@@ -12,17 +12,16 @@ const Navbar = () => {
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/cursuri">Cursuri</a>
+                    <a href="/cursuri">Courses</a>
                 </li>
-                <li></li>
                 <li style={{ float: "right" }}>
                     <a href="/login">
                         <Icon
                             path={mdiAccountCircleOutline}
                             title="User Profile"
-                            size={1.2}
+                            size={1}
                         ></Icon>
-                        Login
+                        <span>Login</span>
                     </a>
                 </li>
             </ul>

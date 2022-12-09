@@ -6,17 +6,27 @@ import "./Homepage.css";
 import Navbar from "../../common/components/Navbar/Navbar";
 
 const Homepage = () => {
+    const onSubmit = () => console.log("Works");
+
     return (
         <div className="homepageContainer">
             <Navbar></Navbar>
 
-            <body className="pageContainer">
-                <div className="logoContainer">
+            <div className="pageContainer">
+                <div className="logoContainer noselect">
                     <Icon size={8} path={mdiGraphOutline} rotate={15}></Icon>
                     <span className="logoContainerSpans">MindTrails</span>
                     <span className="logoContainerSpans">Learning</span>
                 </div>
-            </body>
+
+                <button
+                    className="homepageButton"
+                    type="button"
+                    onClick={() => onSubmit()}
+                >
+                    Get Started
+                </button>
+            </div>
         </div>
     );
 };

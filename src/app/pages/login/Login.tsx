@@ -1,7 +1,7 @@
 import React from "react";
 import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
-import "./Courses.css";
+import "./Login.css";
 
 import Navbar from "../../common/components/navbar/Navbar";
 

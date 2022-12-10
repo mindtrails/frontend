@@ -11,6 +11,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  word-wrap: normal;
 }
 
 
@@ -38,3 +39,23 @@ textarea:focus, input:focus{
   outline: none;
 }
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #55be88 #ffffff00;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #55be88;
+    border-radius: 3px;
+  }

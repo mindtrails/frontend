@@ -14,9 +14,9 @@
     background: rgb(31, 31, 31);
     border-radius: 10px;
     width: 30%;
-    height: 100%;
-    padding: 10px;
-    padding-bottom: 50px;
+    height: calc(100% - 60px);
+    padding: 20px;
+    padding-bottom: 60px;
     display: block;
 }
 
@@ -58,4 +58,26 @@
         margin-bottom: 10px;
     transition-duration: 0.4s;
 
+}
+
+
+.contentView {
+    color: white;
+    background: rgb(31, 31, 31);
+    border-radius: 10px;
+    width: calc(70% - 130px);
+    height: calc(100% - 60px);
+    padding: 20px;
+    padding-bottom: 60px;
+    display: block;
+    margin-left: 10px;
+
+    word-wrap: normal;
+
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.markdownView {
+    max-width: 100%;
 }

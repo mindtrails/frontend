@@ -16,6 +16,24 @@ type FormData = {
     confirmPassword: string;
 };
 
+const postUser = async (data: FormData) => {
+    const response = await fetch("https://mindtrails.fly.dev/users", {
+        method: "POST",
+        mode: "no-cors",
+        credentials: "include",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: data.username,
+            password: data.password,
+        }),
+    });
+
+    console.log(await response.json());
+};
+
 const schema = yup
     .object({
         username: yup.string().required("No username provided."),
@@ -43,7 +61,7 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({ resolver: yupResolver(schema) });
-    const onSubmit = (data: FormData) => console.log(data);
+    const onSubmit = (data: FormData) => postUser(data);
 
     return (
         <div className="homepageContainer">

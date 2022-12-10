@@ -29,6 +29,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import QuizQuestion from "../../common/components/quizquestion/Quizquestion";
 import Exam from "../../common/components/exam/Exam";
+import ModuleExam from "../../common/components/moduleexam/ModuleExam";
 
 const initialNodes: Node[] = [
     {
@@ -138,11 +139,13 @@ const Course = () => {
     const [contentId, setContentId] = useState("1");
     const [isExams, setIsExams] = useState(false);
     const [isRateuri, setIsRateuri] = useState(false);
+    const [isModuleExam, setIsModuleExam] = useState(false);
 
     const onNodeClick = useCallback((changes: any, node: any) => {
         setContentId(node.id);
         setIsExams(false);
         setIsRateuri(false);
+        setIsModuleExam(false);
     }, []);
 
     useEffect(() => {
@@ -171,6 +174,7 @@ const Course = () => {
                             onClick={() => {
                                 setIsExams(!isExams);
                                 setIsRateuri(false);
+                                setIsModuleExam(false);
                             }}
                             type="button"
                         >
@@ -181,10 +185,11 @@ const Course = () => {
                             onClick={() => {
                                 setIsRateuri(!isRateuri);
                                 setIsExams(false);
+                                setIsModuleExam(false);
                             }}
                             type="button"
                         >
-                            Ratings
+                            Rated Exercises
                         </button>
                     </div>
                     <ReactFlow
@@ -200,7 +205,7 @@ const Course = () => {
                     </ReactFlow>
                 </div>
                 <div className="contentView">
-                    <div hidden={isExams || isRateuri}>
+                    <div hidden={isExams || isRateuri || isModuleExam}>
                         <ReactMarkdown
                             className="markdownView"
                             children={
@@ -222,11 +227,25 @@ const Course = () => {
                                 correctAnswer={2}
                             ></QuizQuestion>
                         </div>
+                        <button
+                            className="moduleExamButton"
+                            onClick={() => {
+                                setIsRateuri(false);
+                                setIsExams(false);
+                                setIsModuleExam(true);
+                            }}
+                            type="button"
+                        >
+                            Module Exam →
+                        </button>
                     </div>
                     <div hidden={!isExams}>
                         <Exam></Exam>
                     </div>
-                    <div hidden={!isRateuri}>Test</div>
+                    <div hidden={!isRateuri}>Ratings</div>
+                    <div hidden={!isModuleExam}>
+                        <ModuleExam></ModuleExam>
+                    </div>
                 </div>
             </div>
         </div>

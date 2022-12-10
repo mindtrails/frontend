@@ -1,3 +1,41 @@
 .examContent {
     color: white;
 }
+
+.selectExam {
+    /* width: 40%; */
+}
+
+.pdfHolder {
+    /* max-height: 100%; */
+    display: inline-flex;
+}
+
+.pdfContainer {
+
+}
+
+.annotationLayer {
+    display: none;
+}
+.textLayer {
+    display: none;
+}
+
+
+.pageNavigator {
+    width: 100px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 5px auto 0 auto;
+}
+
+.examProblemInformation {
+    padding: 20px;
+    overflow-y: scroll;
+    height: 800px ;
+}

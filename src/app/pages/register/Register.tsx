@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import "./Register.css";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
     username: string;
@@ -16,13 +17,12 @@ type FormData = {
     confirmPassword: string;
 };
 
-const postUser = async (data: FormData) => {
+const postUser = async (data: FormData, redirect: any) => {
     const response = await fetch("http://localhost:8080/users", {
         method: "POST",
         mode: "cors",
         credentials: "include",
         headers: {
-            "Access-Control-Allow-Origin": "http://localhost:8080",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -30,8 +30,12 @@ const postUser = async (data: FormData) => {
             password: data.password,
         }),
     });
+    console.log(response);
 
-    console.log(await response.json());
+    if (response.status === 204) {
+        setTimeout(() => redirect("/login"), 1000);
+        return "Successfully created a new account.";
+    } else return (await response.json()).message;
 };
 
 const schema = yup
@@ -61,7 +65,12 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({ resolver: yupResolver(schema) });
-    const onSubmit = (data: FormData) => postUser(data);
+    const [resp, setResp] = useState("");
+
+    const redirect = useNavigate();
+
+    const onSubmit = async (data: FormData) =>
+        setResp(await postUser(data, redirect));
 
     return (
         <div className="homepageContainer">
@@ -100,6 +109,17 @@ const Register = () => {
                         {errors.confirmPassword?.message}
                     </p>
                     <input type="submit"></input>
+                    <p
+                        className="simpleField"
+                        style={{
+                            color:
+                                resp !== "Successfully created a new account."
+                                    ? "red"
+                                    : "green",
+                        }}
+                    >
+                        {resp}
+                    </p>
                     <a href="/login" className="registerInstead">
                         Already a member? Sign in
                     </a>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { mdiGraphOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import "./Login.css";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
     username: string;
@@ -21,6 +22,43 @@ const schema = yup
     })
     .required();
 
+const checkAuth = async () => {
+    const response = await fetch("http://localhost:8080/auth", {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    return response;
+};
+
+const logInUser = async (data: FormData, redirect: any) => {
+    const response = await fetch("http://localhost:8080/auth", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: data.username,
+            password: data.password,
+        }),
+    });
+    console.log(Array.from(response.headers.entries()));
+
+    if (response.status === 204) {
+        const test = await checkAuth();
+        console.log(await test.text());
+
+        setTimeout(() => redirect("/"), 1000);
+        return "Login successful.";
+    } else return (await response.json()).message;
+};
+
 const Login = () => {
     const {
         register,
@@ -29,7 +67,12 @@ const Login = () => {
     } = useForm<FormData>({
         resolver: yupResolver(schema),
     });
-    const onSubmit = (data: FormData) => console.log(data);
+    const [resp, setResp] = useState("");
+
+    const onSubmit = async (data: FormData) =>
+        setResp(await logInUser(data, redirect));
+
+    const redirect = useNavigate();
 
     return (
         <div className="homepageContainer">
@@ -57,6 +100,15 @@ const Login = () => {
                         Forgot password?
                     </a>
                     <input type="submit"></input>
+                    <p
+                        className="simpleField"
+                        style={{
+                            color:
+                                resp !== "Login successful." ? "red" : "green",
+                        }}
+                    >
+                        {resp}
+                    </p>
                     <a href="/register" className="registerInstead">
                         Not a member? Signup now
                     </a>

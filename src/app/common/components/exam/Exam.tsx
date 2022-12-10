@@ -22,7 +22,11 @@ import ReactFlow, {
 } from "reactflow";
 
 const Exam = () => {
-    return <div className="contentView">EXAM</div>;
+    return (
+        <div className="contentView">
+            <div className="examContent">Exam content</div>
+        </div>
+    );
 };
 
 export default Exam;

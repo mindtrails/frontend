@@ -28,6 +28,7 @@ import markdown, { loremIpsum } from "./markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import QuizQuestion from "../../common/components/quizquestion/Quizquestion";
+import Exam from "../../common/components/exam/Exam";
 
 const initialNodes: Node[] = [
     {
@@ -135,9 +136,13 @@ const Course = () => {
     const [edges, setEdges] = useState<Edge[]>(initialEdges);
 
     const [contentId, setContentId] = useState("1");
+    const [isExams, setIsExams] = useState(false);
+    const [isRateuri, setIsRateuri] = useState(false);
 
     const onNodeClick = useCallback((changes: any, node: any) => {
         setContentId(node.id);
+        setIsExams(false);
+        setIsRateuri(false);
     }, []);
 
     useEffect(() => {
@@ -161,10 +166,24 @@ const Course = () => {
             <div className="coursePageContainer">
                 <div className="graphView">
                     <div className="graphViewButtons">
-                        <button className="graphViewButton" type="button">
+                        <button
+                            className="graphViewButton"
+                            onClick={() => {
+                                setIsExams(!isExams);
+                                setIsRateuri(false);
+                            }}
+                            type="button"
+                        >
                             Practice Exams
                         </button>
-                        <button className="graphViewButton" type="button">
+                        <button
+                            className="graphViewButton"
+                            onClick={() => {
+                                setIsRateuri(!isRateuri);
+                                setIsExams(false);
+                            }}
+                            type="button"
+                        >
                             Ratings
                         </button>
                     </div>
@@ -181,24 +200,33 @@ const Course = () => {
                     </ReactFlow>
                 </div>
                 <div className="contentView">
-                    <ReactMarkdown
-                        className="markdownView"
-                        children={
-                            markdown.get(contentId) ||
-                            "## This content doesn't exist yet." + loremIpsum
-                        }
-                        remarkPlugins={[remarkGfm, remarkMath, rehypeKatex]}
-                    />
-                    <QuizQuestion
-                        question="Solve the following equation: 4x + 7 = 19"
-                        answers={["x = 2", "x = 3", "x = 4", "x = 5"]}
-                        correctAnswer={2}
-                    ></QuizQuestion>
-                    <QuizQuestion
-                        question="Solve the following equation: 3x - 5 = 7"
-                        answers={["x = 0", "x = 1", "x = 2", "x = 3"]}
-                        correctAnswer={2}
-                    ></QuizQuestion>
+                    <div hidden={isExams || isRateuri}>
+                        <ReactMarkdown
+                            className="markdownView"
+                            children={
+                                markdown.get(contentId) ||
+                                "## This content doesn't exist yet." +
+                                    loremIpsum
+                            }
+                            remarkPlugins={[remarkGfm, remarkMath, rehypeKatex]}
+                        />
+                        <div hidden={contentId !== "1"}>
+                            <QuizQuestion
+                                question="Solve the following equation: 4x + 7 = 19"
+                                answers={["x = 2", "x = 3", "x = 4", "x = 5"]}
+                                correctAnswer={2}
+                            ></QuizQuestion>
+                            <QuizQuestion
+                                question="Solve the following equation: 3x - 5 = 7"
+                                answers={["x = 0", "x = 1", "x = 2", "x = 3"]}
+                                correctAnswer={2}
+                            ></QuizQuestion>
+                        </div>
+                    </div>
+                    <div hidden={!isExams}>
+                        <Exam></Exam>
+                    </div>
+                    <div hidden={!isRateuri}>Test</div>
                 </div>
             </div>
         </div>

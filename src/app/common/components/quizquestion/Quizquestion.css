@@ -1,0 +1,26 @@
+.quizContainer{
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.quizQuestion{
+    
+    font-size: 22px;
+
+    font-family: 'Lexend', sans-serif;
+}
+.quizOptions{
+    display: block;
+}
+.quizButton{
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    margin: 3px 0px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.quizButton:hover {
+    background: rgb(202, 202, 202);
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { mdiPi, mdiBookOpenBlankVariant } from "@mdi/js";
 import "./Course.css";
 
@@ -11,6 +11,7 @@ import remarkGfm from "remark-gfm";
 
 import { useState, useCallback } from "react";
 import ReactFlow, {
+    Viewport,
     addEdge,
     FitViewOptions,
     applyNodeChanges,
@@ -26,78 +27,79 @@ import { Controls } from "@reactflow/controls";
 import markdown, { loremIpsum } from "./markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import QuizQuestion from "../../common/components/quizquestion/Quizquestion";
 
 const initialNodes: Node[] = [
     {
         id: "1",
         data: { label: "Linear Equations" },
-        style: { background: "#d1ff75" },
+        style: { background: "#d1ff75", border: "2px solid #ffffff00" },
         position: { x: 5, y: 5 },
     },
     {
         id: "2",
         data: { label: "Geometry" },
-        style: { background: "#d1ff75" },
+        style: { background: "#d1ff75", border: "2px solid #ffffff00" },
         position: { x: -100, y: 100 },
     },
     {
         id: "3",
         data: { label: "Systems Of Equations" },
-        style: { background: "#d1ff75" },
+        style: { background: "#d1ff75", border: "2px solid #ffffff00" },
         position: { x: 100, y: 100 },
     },
     {
         id: "4",
         data: { label: "Sine and Cosine" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: -100, y: 300 },
     },
     {
         id: "5",
         data: { label: "Factoring" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: 100, y: 200 },
     },
     {
         id: "12",
         data: { label: "Quadratics" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: 100, y: 300 },
     },
     {
         id: "6",
         data: { label: "Trigonometry" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: -300, y: 400 },
     },
     {
         id: "7",
         data: { label: "Matrices" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: -100, y: 400 },
     },
     {
         id: "8",
         data: { label: "Complex Numbers" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: 100, y: 400 },
     },
     {
         id: "9",
         data: { label: "Exponentials" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: 300, y: 400 },
     },
     {
         id: "10",
         data: { label: "Determinants" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: -100, y: 500 },
     },
     {
         id: "11",
         data: { label: "Logarithms" },
-        style: { background: "#9bbffa" },
+        style: { background: "#9bbffa", border: "2px solid #ffffff00" },
         position: { x: 300, y: 500 },
     },
 ];
@@ -127,16 +129,31 @@ const fitViewOptions: FitViewOptions = {
     padding: 0.2,
 };
 
+const defaultView: Viewport = { x: 150, y: 100, zoom: 1 };
 const Course = () => {
-    const [nodes] = useState<Node[]>(initialNodes);
-    const [edges] = useState<Edge[]>(initialEdges);
+    const [nodes, setNodes] = useState<Node[]>(initialNodes);
+    const [edges, setEdges] = useState<Edge[]>(initialEdges);
 
     const [contentId, setContentId] = useState("1");
 
-    const onNodeClick = useCallback(
-        (changes: any, node: any) => setContentId(node.id),
-        []
-    );
+    const onNodeClick = useCallback((changes: any, node: any) => {
+        setContentId(node.id);
+    }, []);
+
+    useEffect(() => {
+        setNodes(
+            initialNodes.map((v) =>
+                v.id !== contentId
+                    ? v
+                    : {
+                          id: v.id,
+                          data: v.data,
+                          position: v.position,
+                          style: { ...v.style, border: "2px solid #fff" },
+                      }
+            )
+        );
+    }, [contentId]);
 
     return (
         <div className="homepageContainer">
@@ -152,11 +169,12 @@ const Course = () => {
                         </button>
                     </div>
                     <ReactFlow
+                        defaultViewport={defaultView}
                         nodes={nodes}
                         edges={edges}
                         fitViewOptions={fitViewOptions}
                         onNodeClick={onNodeClick}
-                        fitView
+                        onNodeDrag={onNodeClick}
                     >
                         <Background />
                         <Controls />
@@ -171,6 +189,16 @@ const Course = () => {
                         }
                         remarkPlugins={[remarkGfm, remarkMath, rehypeKatex]}
                     />
+                    <QuizQuestion
+                        question="Solve the following equation: 4x + 7 = 19"
+                        answers={["x = 2", "x = 3", "x = 4", "x = 5"]}
+                        correctAnswer={2}
+                    ></QuizQuestion>
+                    <QuizQuestion
+                        question="Solve the following equation: 3x - 5 = 7"
+                        answers={["x = 0", "x = 1", "x = 2", "x = 3"]}
+                        correctAnswer={2}
+                    ></QuizQuestion>
                 </div>
             </div>
         </div>

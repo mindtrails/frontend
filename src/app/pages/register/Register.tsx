@@ -17,12 +17,12 @@ type FormData = {
 };
 
 const postUser = async (data: FormData) => {
-    const response = await fetch("https://mindtrails.fly.dev/users", {
+    const response = await fetch("http://localhost:8080/users", {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         credentials: "include",
         headers: {
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "http://localhost:8080",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({

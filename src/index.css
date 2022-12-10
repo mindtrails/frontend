@@ -56,6 +56,6 @@ textarea:focus, input:focus{
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #55be88;
+    background-color: #d1ff75;
     border-radius: 3px;
   }
